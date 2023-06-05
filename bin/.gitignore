@@ -1,3 +1,11 @@
+<<<<<<< HEAD
 /view/
 /control/
 /main/
+=======
+/control/
+/db/
+/main/
+/model/
+/view/
+>>>>>>> 82210f46fb980ebf39936fa2379006182bbb090e
