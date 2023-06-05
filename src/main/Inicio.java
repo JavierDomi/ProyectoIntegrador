@@ -3,6 +3,7 @@ package main;
 import java.awt.EventQueue;
 
 import control.LoginListener;
+import view.PInicio;
 import view.VLogin;
 import view.VPrincipal;
 
@@ -19,12 +20,12 @@ public class Inicio {
 				
 				VPrincipal vp = new VPrincipal();
 				
-				LoginListener listener = new LoginListener(vLogin, vp);
+				PInicio pInicio = new PInicio();
 				
-				vLogin.setListener(listener);
+				LoginListener listener = new LoginListener(vLogin, vp, pInicio);
 				
-				vLogin.hacerVisible();
-				
+				vLogin.setListener(listener);				
+				vLogin.hacerVisible();				
 				vp.setListener(listener);
 				
 			}
