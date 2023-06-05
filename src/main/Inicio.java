@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import control.LoginListener;
 import view.VLogin;
+import view.VPrincipal;
 
 public class Inicio {
 	
@@ -16,11 +17,15 @@ public class Inicio {
 				
 				VLogin vLogin = new VLogin();
 				
-				LoginListener listener = new LoginListener(vLogin);
+				VPrincipal vp = new VPrincipal();
+				
+				LoginListener listener = new LoginListener(vLogin, vp);
 				
 				vLogin.setListener(listener);
 				
 				vLogin.hacerVisible();
+				
+				vp.setListener(listener);
 				
 			}
 		});
