@@ -6,7 +6,7 @@ import control.LoginListener;
 import view.PInicio;
 import view.VLogin;
 import view.VPrincipal;
-
+import view.VResgistroUser;
 public class Inicio {
 	
 	public static void main(String[] args) {
@@ -21,12 +21,14 @@ public class Inicio {
 				VPrincipal vp = new VPrincipal();
 				
 				PInicio pInicio = new PInicio();
+				VResgistroUser vReg = new VResgistroUser();
 				
-				LoginListener listener = new LoginListener(vLogin, vp, pInicio);
+				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg);
 				
 				vLogin.setListener(listener);				
 				vLogin.hacerVisible();				
 				vp.setListener(listener);
+				vReg.setListener(listener);
 				
 			}
 		});

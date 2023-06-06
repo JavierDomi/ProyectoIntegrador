@@ -102,6 +102,10 @@ public class VPrincipal extends JFrame {
 		mntmReservaClases.addActionListener(listener);
 		mntmSalir.addActionListener(listener);		
 	}
+	//para que abre este ventanda cuando accedemos a la cuenta del usuario
+	public void hacerVisible() {
+		setVisible(true);
+	}
 	
 
 }
