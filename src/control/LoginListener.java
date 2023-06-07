@@ -93,6 +93,15 @@ public class LoginListener implements ActionListener {
 			vReg.limpiar();
 			vLogin.hacerVisible();
 			
+		}else if(e.getActionCommand().equals(PHorarios.BTN_APUNTARSE)) {
+			//////////
+			//CARGAR PANEL DE CLASES!!!!!!!!
+			//pHorarios.cargarPanel(pPistas);
+			//pHorarios.setVisible(true);
+			//pPistas.setVisible(false);
+			///////
+			vp.cargarPanel(pPistas);
+			
 		}else if (e.getSource() instanceof JMenuItem) {
 
 			if (e.getActionCommand().equals(VPrincipal.MNTM_INICIO)) {
@@ -100,6 +109,7 @@ public class LoginListener implements ActionListener {
 
 			} else if (e.getActionCommand().equals(VPrincipal.MNTM_HORARIOS)) {
 				vp.cargarPanel(pHorarios);
+				
 
 			} else if (e.getActionCommand().equals(VPrincipal.MNTM_RESERVASCLASES)) {
 

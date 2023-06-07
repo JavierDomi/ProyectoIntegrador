@@ -68,12 +68,12 @@ public class VLogin extends JFrame{
 		
 		btnAcceder = new JButton(BTN_ACCEDER);
 		btnAcceder.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnAcceder.setBounds(204, 112, 100, 25);
+		btnAcceder.setBounds(218, 112, 100, 25);
 		getContentPane().add(btnAcceder);
 		
 		btnNuevoUsuario = new JButton(BTN_RESGISTRAR);
 		btnNuevoUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnNuevoUsuario.setBounds(39, 115, 128, 21);
+		btnNuevoUsuario.setBounds(64, 114, 128, 21);
 		getContentPane().add(btnNuevoUsuario);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
