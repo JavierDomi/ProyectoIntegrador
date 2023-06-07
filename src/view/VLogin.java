@@ -104,36 +104,31 @@ public class VLogin extends JFrame{
 	}
 
 	public User getUsuario() {
-		
-		String user = txtUser.getText();
+		String user = txtUser.getText().trim();
 		User usuario = null;
 		
-		if (user.isEmpty()) {
-			
+		if(user.isEmpty()) {
 			mostrarError("Debe introducir el usuario");
-			
-		} else {
-			
+		}else {
 			String pwd = pswPassword.getText().trim();
 			
-			if (pwd.isEmpty()) 
-				
-				mostrarError("Debe introducir la contraseña");
-			
-			else {
-				
-				usuario = new User(user, pwd);
-				
+			if(pwd.isEmpty()) {
+				mostrarError("Debe introducir el password");
+			}else {
+				usuario = new User(user,pwd);
 			}
-			
 		}
-		
 		return usuario;
 	}
+
 
 	public void mostrarError(String error) {
 		
 		JOptionPane.showMessageDialog(this, error, "ERROR", JOptionPane.ERROR_MESSAGE);
+		
+	}
+	public void cargarUsuario(String usuario) {
+		txtUser.setText(usuario);
 		
 	}
 }
