@@ -192,7 +192,5 @@ public class PPistas extends JPanel{
 		
 		return (String) cmbPista.getSelectedItem();
 	}
-	
-	
-	
+
 }

@@ -143,6 +143,10 @@ public class LoginListener implements ActionListener {
 
 			} else if (e.getActionCommand().equals(PClases.BTN_HORARIOS)) {
 				vp.cargarPanel(pHorarios);
+			}else if(e.getActionCommand().equals(PHorarios.BTN_APUNTARSE)) {
+				vp.cargarPanel(pClases);
+				ArrayList<Clase> listaClases = uPers.consultaClases();
+				pClases.rellenarTabla(listaClases);
 			}
 		}
 	}
@@ -169,3 +173,4 @@ public class LoginListener implements ActionListener {
 
 	}
 }
+

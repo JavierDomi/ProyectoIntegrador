@@ -42,7 +42,9 @@ public class Inicio {
 				
 				pPistas.setListener(listener);
 				
-				pClases.setListener(listener);		
+				pClases.setListener(listener);
+				
+				pHorarios.setListener(listener);
 		
 				
 			}

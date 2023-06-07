@@ -219,8 +219,8 @@ public class VResgistroUser extends JFrame{
 							if(dni.isEmpty()) {
 								mostrarError("Debe introducir el DNI");
 							}else {
-								if(direccion.isEmpty()) {
-									mostrarError("Debe introducir la direccion");
+								if(telefono.isEmpty()) {
+									mostrarError("Debe introducir el teléfono");
 								}else {
 									user = new User(usuario, pwd, nombre, apellidos, dni, direccion, email,telefono);
 								}
