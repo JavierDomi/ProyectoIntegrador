@@ -31,8 +31,14 @@ public class PInicio extends JPanel {
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Joana\\Documents\\ProyectoIntegrador\\ProyectoIntegrador\\img\\3M logo.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("/Users/lvilkelenoka/Desktop/PI/ProyectoIntegrador/img/3M logo.png"));
 		lblNewLabel_1.setBounds(289, 239, 191, 191);
 		add(lblNewLabel_1);
+		
+		/*JLabel lblNewLabel_1 = new JLabel("");
+        ImageIcon logo = new ImageIcon(getClass().getResource("/img/3Mlogo.png"));
+        lblNewLabel_1.setIcon(new ImageIcon(PInicio.class.getResource("/img/220x220_3M.png")));
+        lblNewLabel_1.setBounds(280, 238, 210, 214);
+        add(lblNewLabel_1);*/
 	}
 }
