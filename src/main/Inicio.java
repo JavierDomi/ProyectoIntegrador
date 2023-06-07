@@ -23,15 +23,11 @@ public class Inicio {
 				PHorarios pHorarios = new PHorarios();
 				
 				VResgistroUser vReg = new VResgistroUser();
-				
 
 				PInicio pInicio = new PInicio();
 				
-				
 				PPistas pPistas = new PPistas();
 				
-				
-
 				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg, pHorarios, pPistas);
 				
 				vLogin.setListener(listener);				
