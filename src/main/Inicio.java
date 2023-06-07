@@ -1,13 +1,14 @@
-package main;
+ package main;
 import view.PHorarios;
 import java.awt.EventQueue;
-
 import control.LoginListener;
 import view.PInicio;
 import view.PPistas;
+import view.PClases;
 import view.VLogin;
 import view.VPrincipal;
 import view.VResgistroUser;
+
 public class Inicio {
 	
 	public static void main(String[] args) {
@@ -28,7 +29,9 @@ public class Inicio {
 				
 				PPistas pPistas = new PPistas();
 				
-				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg, pHorarios, pPistas);
+				PClases pClases = new PClases();
+				
+				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg, pHorarios, pPistas, pClases);
 				
 				vLogin.setListener(listener);				
 				vLogin.hacerVisible();	
@@ -38,6 +41,9 @@ public class Inicio {
 				vReg.setListener(listener);
 				
 				pPistas.setListener(listener);
+				
+				pClases.setListener(listener);		
+		
 				
 			}
 		});
