@@ -1,5 +1,5 @@
 package main;
-
+import view.PHorarios;
 import java.awt.EventQueue;
 
 import control.LoginListener;
@@ -19,15 +19,17 @@ public class Inicio {
 				VLogin vLogin = new VLogin();
 				
 				VPrincipal vp = new VPrincipal();
+				PHorarios pHorarios = new PHorarios();
 				
 				PInicio pInicio = new PInicio();
 				VResgistroUser vReg = new VResgistroUser();
 				
-				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg);
+				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg, pHorarios);
 				
 				vLogin.setListener(listener);				
 				vLogin.hacerVisible();				
 				vp.setListener(listener);
+				
 				vReg.setListener(listener);
 				
 			}
