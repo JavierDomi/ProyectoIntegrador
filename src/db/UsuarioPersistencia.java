@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.management.Query;
 
+import model.Pista;
 import model.User;
 
 
@@ -22,6 +25,14 @@ public class UsuarioPersistencia {
 	static final String COL_DIRECCION = "DIRECCION";
 	static final String COL_EMAIL = "EMAIL";
 	static final String COL_TELEFONO = "TELEFONO";
+	//
+	
+	//TABLA PISTAS
+	static final String NOM_TABLA_PISTAS = "PISTAS";
+	static final String COL_ID_PISTAS = "ID";
+	static final String COL_NOMBRE_PISTAS = "NOMBRE";
+	static final String COL_TIPO_PISTAS = "TIPO";
+	static final String COL_PRECIO_PISTAS = "PRECIO";
 	//
 	
 	private AccesoDB acceso;
@@ -138,6 +149,65 @@ public class UsuarioPersistencia {
 		}
 		return res;
 		
+	}
+
+	public ArrayList<String> selectPistas() {
+		
+		ArrayList<String> listaPistas = new ArrayList<>();
+		
+		String query = "SELECT DISTINCT " + COL_TIPO_PISTAS + " FROM " + NOM_TABLA_PISTAS;
+		
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rslt = null;
+		
+		try {
+			
+			con = acceso.getConexion();
+			
+			stmt = con.createStatement();
+			rslt = stmt.executeQuery(query);
+			
+			Pista pista = null;
+			
+			while (rslt.next()) {
+				
+				listaPistas.add(rslt.getString(1));
+				
+			}
+			
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			try {
+				
+				if (rslt != null) rslt.close();
+				if (stmt != null) stmt.close();
+				if (con != null) con.close();
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		}
+		
+		return listaPistas;
+	}
+
+	public ArrayList<Pista> selectPistasFiltro(String tipo, String fecha) {
+		
+		
+		
+		return null;
 	}
 
 }

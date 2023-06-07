@@ -2,13 +2,16 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import db.UsuarioPersistencia;
+import model.Pista;
 import model.User;
 import view.PInicio;
+import view.PPistas;
 import view.VLogin;
 import view.VPrincipal;
 import view.VResgistroUser;
@@ -20,14 +23,16 @@ public class LoginListener implements ActionListener {
 	private VPrincipal vp;
 	private PInicio pInicio;
 	private VResgistroUser vReg;
+	private PPistas pPistas;
 	
 
-	public LoginListener(VLogin vLogin, VPrincipal vp, PInicio pInicio,VResgistroUser vReg) {
+	public LoginListener(VLogin vLogin, VPrincipal vp, PInicio pInicio,VResgistroUser vReg, PPistas pPistas) {
 
 		this.vLogin = vLogin;
 		this.vp = vp;
 		this.pInicio = pInicio;
 		this.vReg = vReg;
+		this.pPistas = pPistas;
 		uPers = new UsuarioPersistencia();
 
 	}
@@ -91,11 +96,51 @@ public class LoginListener implements ActionListener {
 			} else if (e.getActionCommand().equals(VPrincipal.MNTM_RESERVASCLASES)) {
 
 			} else if (e.getActionCommand().equals(VPrincipal.MNTM_RESERVASPISTAS)) {
+				
+				pPistas.cargarCombo(uPers.selectPistas());
+				pPistas.limpiarConsulta();
+				vp.cargarPanel(pPistas);
 
 			} else if (e.getActionCommand().equals(VPrincipal.MNTM_SALIR)) {
+				
 				vp.confirmarSalida();
+					
+			} else if (e.getActionCommand().equals(PPistas.BTN_LIMP)) {
+				
+				pPistas.limpiarConsulta();
+				
+			} else if (e.getActionCommand().equals(PPistas.BTN_DISPO)) {
+				
+				constultarPistas();
+				
+			} else if (e.getActionCommand().equals(PPistas.BTN_DISPO)) {
+				
+				
+				
 			}
 
 		}
+	}
+
+	private void constultarPistas() {
+		
+		String tipo = pPistas.getCmbPista();
+		String fecha = pPistas.getTxtFecha();
+		
+		ArrayList<Pista> listaPistas = uPers.selectPistasFiltro(tipo, fecha);
+		
+		if (listaPistas.size() > 0) {
+			
+			pPistas.rellenarTabla(listaPistas);
+			pPistas.setVisibleTabla(true);
+			
+		} else {
+			
+			pPistas.setVisible(false);
+			JOptionPane.showMessageDialog(pPistas, "No se han encontrado datos para el filtro introducido", 
+					"Resultado de Consulta", JOptionPane.INFORMATION_MESSAGE);
+			
+		}
+		
 	}
 }

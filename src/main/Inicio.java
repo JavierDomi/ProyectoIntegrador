@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import control.LoginListener;
 import view.PInicio;
+import view.PPistas;
 import view.VLogin;
 import view.VPrincipal;
 import view.VResgistroUser;
@@ -20,15 +21,24 @@ public class Inicio {
 				
 				VPrincipal vp = new VPrincipal();
 				
-				PInicio pInicio = new PInicio();
 				VResgistroUser vReg = new VResgistroUser();
 				
-				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg);
+				PInicio pInicio = new PInicio();
+				
+				
+				PPistas pPistas = new PPistas();
+				
+				
+				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg, pPistas);
 				
 				vLogin.setListener(listener);				
-				vLogin.hacerVisible();				
+				vLogin.hacerVisible();	
+				
 				vp.setListener(listener);
+				
 				vReg.setListener(listener);
+				
+				pPistas.setListener(listener);
 				
 			}
 		});
