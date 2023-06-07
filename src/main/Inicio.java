@@ -24,17 +24,15 @@ public class Inicio {
 				
 				VResgistroUser vReg = new VResgistroUser();
 				
-<<<<<<< HEAD
+
 				PInicio pInicio = new PInicio();
 				
 				
 				PPistas pPistas = new PPistas();
 				
 				
-				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg, pPistas);
-=======
-				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg, pHorarios);
->>>>>>> 2f62052f1b6a0c75759d34e63c8aa0442d0582dd
+
+				LoginListener listener = new LoginListener(vLogin, vp, pInicio, vReg, pHorarios, pPistas);
 				
 				vLogin.setListener(listener);				
 				vLogin.hacerVisible();	

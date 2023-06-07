@@ -24,27 +24,18 @@ public class LoginListener implements ActionListener {
 	private VPrincipal vp;
 	private PInicio pInicio;
 	private VResgistroUser vReg;
-<<<<<<< HEAD
 	private PPistas pPistas;
-	
-
-	public LoginListener(VLogin vLogin, VPrincipal vp, PInicio pInicio,VResgistroUser vReg, PPistas pPistas) {
-=======
 	private PHorarios pHorarios;
 	
 
-	public LoginListener(VLogin vLogin, VPrincipal vp, PInicio pInicio,VResgistroUser vReg,PHorarios pHorarios) {
->>>>>>> 2f62052f1b6a0c75759d34e63c8aa0442d0582dd
+	public LoginListener(VLogin vLogin, VPrincipal vp, PInicio pInicio,VResgistroUser vReg,PHorarios pHorarios, PPistas pPistas) {
 
 		this.vLogin = vLogin;
 		this.vp = vp;
 		this.pInicio = pInicio;
 		this.vReg = vReg;
-<<<<<<< HEAD
 		this.pPistas = pPistas;
-=======
 		this.pHorarios = pHorarios;
->>>>>>> 2f62052f1b6a0c75759d34e63c8aa0442d0582dd
 		uPers = new UsuarioPersistencia();
 
 	}
