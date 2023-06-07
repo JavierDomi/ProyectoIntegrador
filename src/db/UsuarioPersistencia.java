@@ -12,16 +12,23 @@ import model.User;
 
 public class UsuarioPersistencia {
 	
+	//TABLA USUARIOS
 	static final String NOM_TABLA = "USERS";
 	static final String COL_USER = "USER";
-	static final String COL_PWD = "PASSWORD";	
+	static final String COL_PWD = "PASSWORD";
+	static final String COL_NOMBRE = "NOMBRE";
+	static final String COL_APELLIDOS = "APELLIDOS";
+	static final String COL_DNI = "DNI";
+	static final String COL_DIRECCION = "DIRECCION";
+	static final String COL_EMAIL = "EMAIL";
+	static final String COL_TELEFONO = "TELEFONO";
+	//
 	
 	private AccesoDB acceso;
-
+	
+	
 	public UsuarioPersistencia() {
-		
 		acceso = new AccesoDB();
-		
 	}
 	
 	public String validarUsuario(User user) {
@@ -100,19 +107,36 @@ public class UsuarioPersistencia {
 		
 	} 
 	
-	public String registrarUsuario (User user) {
+	public int registrarUsuario (User user) {
 		
 		//TODO
 		
-		String query = "INSERT INTO " + NOM_TABLA + " ";
-		
-		String resultado = "";
+		String query = "INSERT INTO " + NOM_TABLA + "(" + COL_USER + ", " + COL_PWD + ", " + COL_NOMBRE + ", " 
+		+ COL_APELLIDOS + ", " +  COL_DNI + ", " + COL_DIRECCION + ", " + COL_EMAIL+ ", " + COL_TELEFONO 
+		+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		Connection con = null;
 		PreparedStatement stmt = null;
-		ResultSet rslt = null;
-		
-		return null;
+		int res = 0;
+		try {
+			con = acceso.getConexion();
+			stmt = con.prepareStatement(query);
+			stmt.setString(1, user.getUsuario());
+			stmt.setString(2, user.getPassword());
+			stmt.setString(3, user.getNombre());
+			stmt.setString(4, user.getApellidos());
+			stmt.setString(5, user.getDni());
+			stmt.setString(6, user.getDireccion());
+			stmt.setString(7, user.getEmail());
+			stmt.setString(8, user.getTelefono());
+			
+			
+			res = stmt.executeUpdate();
+		} catch (Exception e) {
+			//e.printStackTrace();
+			res = -1;
+		}
+		return res;
 		
 	}
 
