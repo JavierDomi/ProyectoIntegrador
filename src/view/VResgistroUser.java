@@ -250,4 +250,16 @@ public class VResgistroUser extends JFrame{
 		JOptionPane.showMessageDialog(this,texto, titulo, icono);
 		
 	}
+	public void limpiar() {
+		txtUsuario.setText("");
+		pswPassword.setText("");
+		pswPassword2.setText("");
+		txtNombre.setText("");
+		txtApellidos.setText("");
+		txtDNI.setText("");
+		txtDireccion.setText("");
+		txtEmail.setText("");
+		txtTelef.setText("");
+		
+	}
 }
