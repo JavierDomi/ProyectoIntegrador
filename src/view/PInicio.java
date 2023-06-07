@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -31,14 +30,12 @@ public class PInicio extends JPanel {
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("/Users/lvilkelenoka/Desktop/PI/ProyectoIntegrador/img/3M logo.png"));
-		lblNewLabel_1.setBounds(289, 239, 191, 191);
+
+		ImageIcon logo = new ImageIcon(getClass().getResource("/img/3Mlogo.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(PInicio.class.getResource("/img/220x220_3M.png")));
+		lblNewLabel_1.setBounds(280, 238, 210, 214);
+
 		add(lblNewLabel_1);
 		
-		/*JLabel lblNewLabel_1 = new JLabel("");
-        ImageIcon logo = new ImageIcon(getClass().getResource("/img/3Mlogo.png"));
-        lblNewLabel_1.setIcon(new ImageIcon(PInicio.class.getResource("/img/220x220_3M.png")));
-        lblNewLabel_1.setBounds(280, 238, 210, 214);
-        add(lblNewLabel_1);*/
 	}
 }
