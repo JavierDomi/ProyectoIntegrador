@@ -112,12 +112,57 @@ public class LoginListener implements ActionListener {
 
 			// VENTANA RESERVA PISTAS
 			} else if (e.getActionCommand().equals(PPistas.BTN_LIMP)) {
+				
 				pPistas.limpiarConsulta();
 
 			} else if (e.getActionCommand().equals(PPistas.BTN_DISPO)) {
+				
 				constultarPistas();
 
-			} else if (e.getActionCommand().equals(PPistas.BTN_DISPO)) {
+			} else if (e.getActionCommand().equals(PPistas.BTN_RES)) {
+				
+				String no = "NO";
+				
+				int pos = pPistas.getSelectedTblTabla();
+				String estado = pPistas.getDispoIndex(pos);
+				
+				String nombre = pPistas.getNombreIndex(pos);
+				
+				if (estado.equals("NO")) {
+					
+					pPistas.mostrarError("Este espacio ya está reservado");
+					
+				} else {
+				
+					uPers.setDispo(no, nombre);
+					
+					constultarPistas();
+				
+				}
+	
+			
+			} else if (e.getActionCommand().equals(PPistas.BTN_ANU)) {
+				
+				/*String si = "SI";
+				
+				int pos = pPistas.getSelectedTblTabla();
+				String estado = pPistas.getDispoIndex(pos);
+				
+				String nombre = pPistas.getNombreIndex(pos);
+				
+				if (estado.equals("SI")) {
+					
+					pPistas.mostrarError("Este espacio no está reservado");
+					
+				} else {
+				
+					uPers.setDispo(si, nombre);
+				
+					constultarPistas();
+				
+				}*/
+				
+				pPistas.mostrarError("Para anular una reserva contacte con el administrador");
 
 			// VENTANA RESERVA CLASES
 			} else if (e.getActionCommand().equals(PClases.BTN_RESERVAR)) {
@@ -154,7 +199,14 @@ public class LoginListener implements ActionListener {
 	private void constultarPistas() {
 
 		String tipo = pPistas.getCmbPista();
+		
 		String fecha = pPistas.getTxtFecha();
+		
+		if (fecha.equals("")) {
+			
+			fecha = "Todas";
+			
+		}
 
 		ArrayList<Pista> listaPistas = uPers.selectPistasFiltro(tipo, fecha);
 
@@ -165,7 +217,7 @@ public class LoginListener implements ActionListener {
 
 		} else {
 
-			pPistas.setVisible(false);
+			pPistas.setVisibleTabla(false);
 			JOptionPane.showMessageDialog(pPistas, "No se han encontrado datos para el filtro introducido",
 					"Resultado de Consulta", JOptionPane.INFORMATION_MESSAGE);
 

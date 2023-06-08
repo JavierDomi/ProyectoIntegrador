@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -14,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 
 import control.LoginListener;
@@ -23,6 +27,7 @@ public class PPistas extends JPanel{
 	
 	public static final String BTN_DISPO = "Ver Disponibilidad";
 	public static final String BTN_RES = "Reservar";
+	public static final String BTN_ANU = "Anular Reserva";
 	public static final String BTN_LIMP = "Limpiar";
 	
 	private JTable tblTabla;
@@ -34,6 +39,7 @@ public class PPistas extends JPanel{
 	private DefaultTableModel tModel;
 	private DefaultComboBoxModel<String> dcbmPistas;
 	private JButton btnLimpiar;
+	private JButton btnAnularRes;
 	
 	public PPistas() {
 		
@@ -73,7 +79,11 @@ public class PPistas extends JPanel{
 		add(scrpTabla);
 		
 		tblTabla = new JTable();
+		tblTabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		scrpTabla.setViewportView(tblTabla);
+		
+		configurarTabla();
 		
 		btnReservar = new JButton("Reservar");
 		btnReservar.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -90,6 +100,12 @@ public class PPistas extends JPanel{
 		btnLimpiar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnLimpiar.setBounds(547, 46, 92, 21);
 		add(btnLimpiar);
+		
+		btnAnularRes = new JButton("Anular Reserva");
+		btnAnularRes.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAnularRes.setBounds(56, 452, 125, 21);
+		btnAnularRes.setVisible(false);
+		add(btnAnularRes);
 		
 		
 	}
@@ -112,6 +128,7 @@ public class PPistas extends JPanel{
 		tModel.addColumn("Precio / h");
 		tModel.addColumn("Hora Inicio");
 		tModel.addColumn("Hora Fin");
+		tModel.addColumn("Fecha");
 		tModel.addColumn("Disponibilidad");
 		
 		tblTabla.setModel(tModel);
@@ -119,8 +136,9 @@ public class PPistas extends JPanel{
 		tblTabla.getColumn("Nombre").setPreferredWidth(100);
 		tblTabla.getColumn("Tipo").setPreferredWidth(100);
 		tblTabla.getColumn("Precio / h").setPreferredWidth(100);
-		tblTabla.getColumn("Hora Incio").setPreferredWidth(70);
+		tblTabla.getColumn("Hora Inicio").setPreferredWidth(70);
 		tblTabla.getColumn("Hora Fin").setPreferredWidth(70);
+		tblTabla.getColumn("Fecha").setPreferredWidth(70);
 		tblTabla.getColumn("Disponibilidad").setPreferredWidth(100);
 		
 	}
@@ -129,20 +147,21 @@ public class PPistas extends JPanel{
 		
 		tModel.getDataVector().clear();
 		
-		Object[] fila = new Object[6];
+		Object[] fila = new Object[7];
 		
 		for (Pista pista : listaPistas) {
 			
 			fila [0] = pista.getNombre();
-			fila [0] = pista.getTipo();
-			fila [0] = pista.getPrecio();
-			fila [0] = "09:00";
-			fila [0] = "11:00";
-			fila [0] = pista.getDispo();				
+			fila [1] = pista.getTipo();
+			fila [2] = pista.getPrecio();
+			fila [3] = pista.getHoraIni();
+			fila [4] = pista.getHoraFin();
+			fila [5] = pista.getFecha();
+			fila [6] = pista.getDispo();	
+			
+			tModel.addRow(fila);
 			
 		}
-		
-		tModel.addRow(fila);
 		
 	}
 	
@@ -150,6 +169,7 @@ public class PPistas extends JPanel{
 		
 		scrpTabla.setVisible(b);
 		btnReservar.setVisible(b);
+		btnAnularRes.setVisible(b);
 		
 	}
 	
@@ -180,6 +200,7 @@ public class PPistas extends JPanel{
 		btnDisponibilidad.addActionListener(listener);
 		btnLimpiar.addActionListener(listener);
 		btnReservar.addActionListener(listener);
+		btnAnularRes.addActionListener(listener);
 		
 	}
 
@@ -193,4 +214,29 @@ public class PPistas extends JPanel{
 		return (String) cmbPista.getSelectedItem();
 	}
 
+	public void mostrarError(String error) {
+		
+
+			JOptionPane.showMessageDialog(this, error, "ERROR", JOptionPane.ERROR_MESSAGE);	
+		
+	}
+	
+	public int getSelectedTblTabla() {
+		
+		return tblTabla.getSelectedRow();
+		
+	}
+	
+	public String getDispoIndex(int index) {
+		
+		return (String) tModel.getValueAt(index, 6);
+		
+	}
+
+	public String getNombreIndex(int pos) {
+		
+		return (String) tModel.getValueAt(pos, 0);
+		
+	}
+	
 }
