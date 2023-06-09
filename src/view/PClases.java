@@ -16,7 +16,7 @@ import model.Clase;
 
 public class PClases extends JPanel {
 	
-	public static final String BTN_RESERVAR = "Reservar";
+	public static final String BTN_RESERVAR = "Reservar Clase";
 	public static final String BTN_HORARIOS = "Horarios";
 		
 	private JButton btnHorarios;
